@@ -1,0 +1,27 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: argocd
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: networking
+  source:
+    repoURL: https://github.com/MartinSchmidt/talos-test.git
+    targetRevision: main
+    path: . 
+    plugin:
+      name: helm-overdrive
+      env:
+        - name: application_folder
+          value: services/argocd
+        - name: helm_repo
+          value: https://argoproj.github.io/argo-helm
+        - name: chart_name
+          value: argocd
+        - name: chart_version
+          value: 4.3.1

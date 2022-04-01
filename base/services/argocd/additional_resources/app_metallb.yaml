@@ -1,0 +1,32 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: networking
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: metallb
+  namespace: argocd
+  finalizers:
+    - resources-finalizer.argocd.argoproj.io
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: networking
+  source:
+    repoURL: https://github.com/MartinSchmidt/talos-test.git
+    targetRevision: main
+    path: . 
+    plugin:
+      name: helm-overdrive
+      env:
+        - name: application_folder
+          value: services/metallb
+        - name: helm_repo
+          value: https://metallb.github.io/metallb
+        - name: chart_name
+          value: metallb
+        - name: chart_version
+          value: 0.12.1
