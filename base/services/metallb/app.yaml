@@ -1,0 +1,8 @@
+apiVersion: argocd-discover/v1alpha1
+name: metallb
+namespace: networking
+project: default
+source:
+  helm_repo: https://metallb.github.io/metallb
+  chart_name: metallb
+  chart_version: 0.12.1

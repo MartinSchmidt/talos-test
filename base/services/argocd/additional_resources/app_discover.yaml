@@ -1,7 +1,7 @@
 apiVersion: argoproj.io/v1alpha1
 kind: Application
 metadata:
-  name: metallb
+  name: yggdrasil
   namespace: argocd
   finalizers:
     - resources-finalizer.argocd.argoproj.io
@@ -9,7 +9,7 @@ spec:
   project: default
   destination:
     server: https://kubernetes.default.svc
-    namespace: networking
+    namespace: argocd
   syncPolicy:
     automated:
       prune: true
@@ -21,13 +21,5 @@ spec:
     targetRevision: main
     path: . 
     plugin:
-      name: helm-overdrive
-      env:
-        - name: HO_APPLICATION_FOLDER
-          value: services/metallb
-        - name: HO_HELM_REPO
-          value: https://metallb.github.io/metallb
-        - name: HO_CHART_NAME
-          value: metallb
-        - name: HO_CHART_VERSION
-          value: 0.12.1
+      name: argocd-discover
+
