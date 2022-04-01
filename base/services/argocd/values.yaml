@@ -27,9 +27,3 @@ repoServer:
     - mountPath: /usr/local/bin/helm-overdrive
       name: custom-tools
       subPath: helm-overdrive
-
-extraObjects: 
-  - apiVersion: v1
-    kind: Namespace
-    metadata:
-      name: networking
