@@ -22,11 +22,11 @@ spec:
     plugin:
       name: helm-overdrive
       env:
-        - name: application_folder
+        - name: HO_APPLICATION_FOLDER
           value: services/metallb
-        - name: helm_repo
+        - name: HO_HELM_REPO
           value: https://metallb.github.io/metallb
-        - name: chart_name
+        - name: HO_CHART_NAME
           value: metallb
-        - name: chart_version
+        - name: HO_CHART_VERSION
           value: 0.12.1
