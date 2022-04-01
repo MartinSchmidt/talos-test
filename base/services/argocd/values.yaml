@@ -20,7 +20,9 @@ repoServer:
       image: alpine:3.8
       command: [sh, -c]
       args:
-        - wget -qO yq https://github.com/mikefarah/yq/releases/download/v4.23.1/yq_linux_amd64 && chmod +x yq && mv yq /custom-tools/yq &&
+        - wget -qO- https://github.com/distributed-technologies/helm-overdrive/releases/download/0.0.10/helm-overdrive.linux-amd64.tar.gz | tar -xvzf - && 
+          mv helm-overdrive /custom-tools/helm-overdrive &&
+          wget -qO yq https://github.com/mikefarah/yq/releases/download/v4.23.1/yq_linux_amd64 && chmod +x yq && mv yq /custom-tools/yq &&
           wget -qO argocd-discover https://raw.githubusercontent.com/MartinSchmidt/talos-test/main/argocd-discover.sh && chmod +x argocd-discover &&  mv argocd-discover /custom-tools/argocd-discover
       volumeMounts:
       - mountPath: /custom-tools
@@ -29,3 +31,5 @@ repoServer:
     - mountPath: /usr/local/bin/helm-overdrive
       name: custom-tools
       subPath: helm-overdrive
+
+
