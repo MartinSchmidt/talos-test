@@ -31,5 +31,9 @@ repoServer:
     - mountPath: /usr/local/bin/helm-overdrive
       name: custom-tools
       subPath: helm-overdrive
-
-
+    - mountPath: /usr/local/bin/yq
+      name: custom-tools
+      subPath: yq
+    - mountPath: /usr/local/bin/argocd-discover
+      name: custom-tools
+      subPath: argocd-discover
