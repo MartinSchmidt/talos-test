@@ -2,19 +2,21 @@
 
 BASE_FOLDER=$(cat helm-overdrive.yaml | yq .base_folder)
 FILES=$(grep -lr "apiVersion: argocd-discover/v1alpha1" ./$BASE_FOLDER)
+ROOT="./$BASE_FOLDER"
 
 rm -f manifest.yaml
 
 for f in $FILES
 do 
+    temp="${f#$ROOT/}"
+    APPLICATION_FOLDER="${temp%/*}"
     NAME=$(cat $f | yq .name)
     NAMESPACE=$(cat $f | yq .namespace)
     PROJECT=$(cat $f | yq .project)
     HELM_REPO=$(cat $f | yq .source.helm_repo)
     CHART_NAME=$(cat $f | yq .source.chart_name)
     CHART_VERSION=$(cat $f | yq .source.chart_version)
-
-    echo "$NAME $PROJECT $CHART_NAME $CHART_VERSION"
+    
 
 cat << EndOfMessage >> manifest.yaml
 apiVersion: argoproj.io/v1alpha1
@@ -42,7 +44,7 @@ spec:
     name: helm-overdrive
     env:
     - name: HO_APPLICATION_FOLDER
-      value: services/argocd
+      value: $APPLICATION_FOLDER
     - name: HO_HELM_REPO
       value: $HELM_REPO
     - name: HO_CHART_NAME
