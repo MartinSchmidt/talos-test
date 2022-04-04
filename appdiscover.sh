@@ -1,3 +1,4 @@
+#!/bin/bash
 
 BASE_FOLDER=$(cat helm-overdrive.yaml | yq .base_folder)
 FILES=$(grep -lr "apiVersion: argocd-discover/v1alpha1" ./$BASE_FOLDER)

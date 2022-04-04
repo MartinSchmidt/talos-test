@@ -23,7 +23,7 @@ repoServer:
         - wget -qO- https://github.com/distributed-technologies/helm-overdrive/releases/download/0.0.10/helm-overdrive.linux-amd64.tar.gz | tar -xvzf - && 
           mv helm-overdrive /custom-tools/helm-overdrive &&
           wget -qO yq https://github.com/mikefarah/yq/releases/download/v4.23.1/yq_linux_amd64 && chmod +x yq && mv yq /custom-tools/yq &&
-          wget -qO appdiscover https://raw.githubusercontent.com/MartinSchmidt/talos-test/main/argocd-discover.sh && chmod +x appdiscover &&  mv appdiscover /custom-tools/appdiscover
+          wget -qO appdiscover https://raw.githubusercontent.com/MartinSchmidt/talos-test/main/appdiscover.sh && chmod +x appdiscover &&  mv appdiscover /custom-tools/appdiscover
       volumeMounts:
       - mountPath: /custom-tools
         name: custom-tools
