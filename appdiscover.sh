@@ -33,24 +33,24 @@ spec:
     namespace: $NAMESPACE
   syncPolicy:
     automated:
-    prune: true
-    selfHeal: true
-    allowEmpty: false 
+      prune: true
+      selfHeal: true
+      allowEmpty: false 
   source:
     repoURL: $ARGOCD_APP_SOURCE_REPO_URL
     targetRevision: $ARGOCD_APP_SOURCE_TARGET_REVISION
     path: $ARGOCD_APP_SOURCE_PATH
     plugin:
-    name: helm-overdrive
-    env:
-    - name: HO_APPLICATION_FOLDER
-      value: $APPLICATION_FOLDER
-    - name: HO_HELM_REPO
-      value: $HELM_REPO
-    - name: HO_CHART_NAME
-      value: $CHART_NAME
-    - name: HO_CHART_VERSION
-      value: $CHART_VERSION
+      name: helm-overdrive
+      env:
+      - name: HO_APPLICATION_FOLDER
+        value: $APPLICATION_FOLDER
+      - name: HO_HELM_REPO
+        value: $HELM_REPO
+      - name: HO_CHART_NAME
+        value: $CHART_NAME
+      - name: HO_CHART_VERSION
+        value: $CHART_VERSION
 ---
 EndOfMessage
 
