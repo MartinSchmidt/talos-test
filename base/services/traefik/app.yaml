@@ -1,0 +1,8 @@
+apiVersion: argocd-discover/v1alpha1
+name: traefik
+namespace: networking
+project: networking
+source:
+  helm_repo: https://helm.traefik.io/traefik
+  chart_name: traefik
+  chart_version: 10.19.4
