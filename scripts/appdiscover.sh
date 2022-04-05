@@ -35,9 +35,7 @@ spec:
     automated:
       prune: true
       selfHeal: true
-      allowEmpty: false 
-    syncOptions:     
-      - CreateNamespace=true
+      allowEmpty: false
   source:
     repoURL: $ARGOCD_APP_SOURCE_REPO_URL
     targetRevision: $ARGOCD_APP_SOURCE_TARGET_REVISION
