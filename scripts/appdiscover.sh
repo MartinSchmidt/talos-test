@@ -57,6 +57,8 @@ spec:
         value: $CHART_VERSION
       - name: HO_ENV_FOLDER
         value: $ENV_FOLDER
+      - name: HELM_NAMESPACE
+        value: $NAMESPACE
 ---
 EndOfMessage
 
