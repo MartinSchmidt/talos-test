@@ -4,6 +4,8 @@ BASE_FOLDER=$(cat helm-overdrive.yaml | yq .base_folder)
 FILES=$(grep -lr "apiVersion: argocd-discover/v1alpha1" ./$BASE_FOLDER)
 ROOT="./$BASE_FOLDER"
 
+
+
 rm -f manifest.yaml
 
 for f in $FILES
@@ -53,6 +55,8 @@ spec:
         value: $CHART_NAME
       - name: HO_CHART_VERSION
         value: $CHART_VERSION
+      - name: HO_ENV_FOLDER
+        value: $ENV_FOLDER
 ---
 EndOfMessage
 
